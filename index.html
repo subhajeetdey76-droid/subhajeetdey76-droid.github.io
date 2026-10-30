@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Subhajeet Dey, MBA Finance, ICFAI Business School Hyderabad: work samples in CAPM analysis, banking analytics, hypothesis testing and SQL.">
+
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Subhajeet Dey Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a workbook. The header is the cover sheet, each project is a sheet tab,
+   and every headline figure names the sheet it was computed on. */
+:root{
+  --bg:#F3F6F4; --surface:#FFFFFF; --ink:#14201B; --muted:#56665F; --line:#D5DED9;
+  --accent:#0B6B53; --accent-soft:#E1F0EA; --second:#B45309; --neg:#B42318; --grid:#E6ECE9;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1412; --surface:#141D1A; --ink:#E4EDE8; --muted:#93A39C; --line:#28352F;
+  --accent:#43C197; --accent-soft:#16302A; --second:#F0A04B; --neg:#F27A6B; --grid:#1E2925; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1412; --surface:#141D1A; --ink:#E4EDE8; --muted:#93A39C; --line:#28352F;
+  --accent:#43C197; --accent-soft:#16302A; --second:#F0A04B; --neg:#F27A6B; --grid:#1E2925; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:0 64px}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+.mono{font-family:var(--mono)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* Cover */
+.cover{padding-block:56px 28px;display:grid;gap:18px}
+.cover h1{font-size:clamp(40px,7vw,72px);font-weight:700;letter-spacing:-.02em}
+.cover .lede{font-size:clamp(17px,2.2vw,20px);max-width:62ch;color:var(--ink);margin:0}
+.focus{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:12.5px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:var(--surface)}
+.contact{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:15px}
+.contact .addr{font-family:var(--mono);user-select:all;word-break:break-all}
+button{font:inherit;cursor:pointer}
+.btn-ghost{font-family:var(--mono);font-size:12.5px;padding:5px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--accent)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Sheet tabs */
+.tabs{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);
+  display:flex;gap:2px;overflow-x:auto;margin-top:12px;scrollbar-width:none}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
+.tabs a{flex:0 0 auto;text-decoration:none;color:var(--muted);font-family:var(--mono);font-size:13px;padding:10px 14px 9px;
+  border:1px solid transparent;border-bottom:none;border-radius:6px 6px 0 0;white-space:nowrap}
+.tabs a:hover{color:var(--ink)}
+.tabs a.on{color:var(--ink);background:var(--surface);border-color:var(--line);box-shadow:0 1px 0 var(--surface)}
+.tabs a .x{color:var(--accent);margin-right:6px}
+
+/* Project sheet */
+.sheet{padding-block:44px 8px;display:grid;gap:24px;scroll-margin-top:56px}
+.sheet + .sheet{border-top:1px solid var(--line)}
+.sheet-head{display:grid;gap:10px}
+.sheet-head h2{font-size:clamp(28px,4.2vw,40px);font-weight:700;letter-spacing:-.01em}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+.question{font-size:18px;max-width:64ch;margin:0}
+
+.cols{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:820px){.cols{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 18px 12px;min-width:0}
+.panel h3{font-family:var(--body);font-size:15px;font-weight:600;margin-bottom:2px}
+.panel .sub{font-size:13px;color:var(--muted);margin:0 0 8px}
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.chart text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.chart .gl{stroke:var(--grid);stroke-width:1}
+.chart .zero{stroke:var(--muted);stroke-width:1}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--muted);margin:6px 0 4px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.stack{display:grid;gap:16px;min-width:0}
+
+/* Figures with source sheet */
+.figs{display:grid;gap:0;margin:0}
+.fig{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.fig:last-child{border-bottom:none}
+.fig dt{font-size:14px;color:var(--ink)}
+.fig dd{margin:0;font-family:var(--mono);font-size:15px;font-weight:500;font-variant-numeric:tabular-nums;text-align:right}
+.fig .src{grid-column:1 / -1;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.pos{color:var(--accent)} .neg{color:var(--neg)}
+
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+@media (max-width:720px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpis div:last-child{grid-column:1 / -1}}
+.kpis div{background:var(--surface);padding:14px 16px}
+.kpis span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpis strong{font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:700;font-variant-numeric:tabular-nums}
+
+.built{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px;max-width:68ch}
+.built li::marker{color:var(--accent)}
+.verdict{border-left:3px solid var(--accent);background:var(--accent-soft);padding:12px 14px;border-radius:0 8px 8px 0;font-size:15px;margin:0}
+
+.dl{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:14px 16px;border:1px dashed var(--line);border-radius:10px;background:var(--surface)}
+.btn{text-decoration:none;display:inline-block;font-family:var(--body);font-weight:600;font-size:14.5px;padding:9px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--surface)}
+.btn:hover{filter:brightness(1.08)}
+.btn[disabled]{opacity:.55;cursor:default;filter:none}
+.dl .info{font-size:13px;color:var(--muted);min-width:0}
+.dl .info .mono{color:var(--ink);word-break:break-all}
+.dl .status{font-size:13px;color:var(--muted);flex-basis:100%}
+.dl .status:empty{display:none}
+.sheets{display:flex;flex-wrap:wrap;gap:6px}
+.sheets span{font-family:var(--mono);font-size:11.5px;padding:2px 8px;border:1px solid var(--line);border-radius:4px;color:var(--muted);background:var(--bg)}
+.team{font-size:14px;color:var(--muted);margin:0}
+.team b{color:var(--ink);font-weight:600}
+.code-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+pre.code{margin:0;padding:14px 16px;font-family:var(--mono);font-size:13px;line-height:1.55;color:var(--ink)}
+pre.code .k{color:var(--accent);font-weight:500}
+.tbl-wrap{overflow-x:auto;margin-top:12px}
+table.result{border-collapse:collapse;font-size:13px;min-width:100%;font-variant-numeric:tabular-nums}
+table.result th,table.result td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+table.result th{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--muted)}
+table.result td.n{text-align:right}
+.er-wrap{overflow-x:auto}
+.er{min-width:560px}
+.er .box{fill:var(--surface);stroke:var(--line);stroke-width:1.25}
+.er .hd{fill:var(--accent-soft)}
+.er .t{font-family:var(--mono);font-size:12px;font-weight:500;fill:var(--ink)}
+.er .f{font-family:var(--mono);font-size:10.5px;fill:var(--muted)}
+.er .pk{fill:var(--accent)}
+.er .fk{fill:var(--second)}
+.er .rel{stroke:var(--muted);stroke-width:1.25;fill:none}
+.skills{display:flex;flex-wrap:wrap;gap:6px}
+.skills span{font-family:var(--mono);font-size:12px;padding:3px 9px;border-radius:4px;background:var(--accent-soft);color:var(--ink)}
+footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="cover">
+    <div class="eyebrow">MBA Finance · ICFAI Business School, Hyderabad</div>
+    <h1>Subhajeet Dey</h1>
+    <p class="lede">Work samples from my MBA: equity risk and CAPM analysis, a banking analytics dashboard, a statistical test of an airline's published claim, and a relational database in MySQL. Download the Excel workbooks below to check the formulas; the SQL script is available on request.</p>
+    <div class="focus" aria-label="Internship interests">
+      <span class="chip">Investment banking</span>
+      <span class="chip">Equity research</span>
+      <span class="chip">Capital markets</span>
+      <span class="chip">Buy-side</span>
+    </div>
+    <div class="contact">
+      <span>Open to summer internships. Contact:</span>
+      <span class="addr" id="email">subhajeet.dey26mh@ibsindia.org</span>
+      <button class="btn-ghost" id="copy-email" type="button">Copy email</button>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Projects">
+    <a href="#capm" data-tab="capm"><span class="x">fx</span>DCM Ltd · CAPM</a>
+    <a href="#banking" data-tab="banking"><span class="x">fx</span>Banking dashboard</a>
+    <a href="#hypothesis" data-tab="hypothesis"><span class="x">fx</span>Delta on-time test</a>
+    <a href="#sql" data-tab="sql"><span class="x">fx</span>Movie booking SQL</a>
+  </nav>
+
+  <!-- Project: CAPM -->
+  <section class="sheet" id="capm">
+    <div class="sheet-head">
+      <div class="eyebrow">Financial Management · Equity risk &amp; return</div>
+      <h2>DCM Ltd. against the Sensex, 2021–2025</h2>
+      <div class="meta"><span><b>Company</b> DCM Ltd., BSE 502820 (textiles &amp; industrial fibres)</span><span><b>Benchmark</b> S&amp;P BSE Sensex</span><span><b>Data</b> 1,240 daily closes</span><span><b>Work</b> Individual company file in a group of five</span></div>
+    </div>
+    <p class="question">How much market risk does DCM Ltd. carry, and did its actual returns earn what CAPM said they should?</p>
+
+    <div class="cols">
+      <div class="stack">
+        <div class="panel">
+          <h3>Price growth, indexed to 100 on 1 Jan 2021</h3>
+          <p class="sub">Weekly sample of daily closing prices</p>
+          <div class="legend"><span><i style="background:var(--accent)"></i>DCM Ltd.</span><span><i style="background:var(--second)"></i>BSE Sensex</span></div>
+          <svg class="chart" id="c-price" viewBox="0 0 640 250" role="img" aria-label="DCM Ltd. and Sensex indexed price lines, 2021 to 2025"></svg>
+        </div>
+        <div class="panel">
+          <h3>Actual return vs CAPM expected return, by year</h3>
+          <p class="sub">E(R) = Rf + β(Rm − Rf), with Rf = 6.72%</p>
+          <div class="legend"><span><i style="background:var(--accent)"></i>Actual stock return</span><span><i style="background:var(--muted)"></i>CAPM expected</span></div>
+          <svg class="chart" id="c-capm" viewBox="0 0 640 250" role="img" aria-label="Grouped bars of actual versus CAPM expected return for 2021 to 2025"></svg>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Key figures</h3>
+        <dl class="figs">
+          <div class="fig"><dt>Beta (β)</dt><dd>0.77</dd><span class="src">FINAL DATA · Cov(Ri,Rm) / Var(Rm)</span></div>
+          <div class="fig"><dt>Correlation with Sensex</dt><dd>0.21</dd><span class="src">FINAL DATA · CORREL</span></div>
+          <div class="fig"><dt>Share of risk that is systematic</dt><dd>4.25%</dd><span class="src">FINAL DATA · ρ²</span></div>
+          <div class="fig"><dt>Annualised return</dt><dd class="pos">36.97%</dd><span class="src">FINAL DATA · avg daily × 252</span></div>
+          <div class="fig"><dt>Annualised risk (σ)</dt><dd>51.99%</dd><span class="src">FINAL DATA · daily σ × √252</span></div>
+          <div class="fig"><dt>Daily σ, stock vs market</dt><dd>3.28% / 0.88%</dd><span class="src">FINAL DATA · STDEV.S</span></div>
+          <div class="fig"><dt>Minimum-risk portfolio weight in stock</dt><dd>1.77%</dd><span class="src">FINAL DATA · two-asset min-variance</span></div>
+        </dl>
+      </div>
+    </div>
+
+    <p class="verdict">DCM moves less than the market (β of 0.77), but almost all of its risk is company-specific: only about 4% of its variance comes from the Sensex. Returns beat CAPM by a wide margin in 2021 and 2024 and fell short in 2022, 2023 and 2025. A diversified investor is paid for very little of the volatility this stock carries.</p>
+
+    <ul class="built">
+      <li>Pulled five years of daily OHLC, volume and delivery data from BSE for DCM Ltd. and the Sensex, then aligned the two series by date.</li>
+      <li>Calculated daily returns, average return, standard deviation, covariance, correlation and beta with live Excel formulas. Each figure sits next to its formula and a written interpretation.</li>
+      <li>Annualised the returns and computed CAPM expected returns year by year, comparing each year with the actual return.</li>
+      <li>Built a two-asset minimum-variance portfolio of the stock and the market.</li>
+    </ul>
+
+    <div class="dl">
+      <a class="btn" href="DCM_Ltd_Risk_Return_CAPM_Subhajeet_Dey.xlsx" download>Download workbook</a>
+      <div class="info"><span class="mono">DCM_Ltd_Risk_Return_CAPM_Subhajeet_Dey.xlsx</span> · 0.6 MB</div>
+      <div class="sheets" aria-label="Sheets in this workbook"><span>Details</span><span>Actual_data-DCM_LTD</span><span>Actual_Data_Index</span><span>FINAL DATA</span></div>
+    </div>
+  </section>
+
+  <!-- Project: Banking -->
+  <section class="sheet" id="banking">
+    <div class="sheet-head">
+      <div class="eyebrow">Spreadsheet Essentials for Managers · Capstone</div>
+      <h2>Banking analytics dashboard</h2>
+      <div class="meta"><span><b>Data</b> 11 relational tables, 2020–2026</span><span><b>Scale</b> 50,000 transactions · 1,667 accounts · 333 loans</span><span><b>Work</b> Individual</span></div>
+    </div>
+    <p class="question">Where is a retail bank's money moving: which products, which branches and which years? And can a manager filter the whole view in one click?</p>
+
+    <div class="kpis" aria-label="Dashboard headline figures">
+      <div><span>Transaction value</span><strong>₹120.8 M</strong></div>
+      <div><span>Dated transactions</span><strong>48,259</strong></div>
+      <div><span>Customers</span><strong>1,111</strong></div>
+      <div><span>Branches</span><strong>50</strong></div>
+      <div><span>Avg ticket</span><strong>₹2,503</strong></div>
+    </div>
+
+    <div class="cols">
+      <div class="stack">
+        <div class="panel">
+          <h3>Value by transaction type</h3>
+          <p class="sub">₹ million, all 50,000 transactions · Calculations sheet, SUMIF</p>
+          <svg class="chart" id="c-type" viewBox="0 0 640 200" role="img" aria-label="Horizontal bars: deposits 38.0, transfers 37.5, withdrawals 37.1, payments 12.5 million rupees"></svg>
+        </div>
+        <div class="panel">
+          <h3>Value by year</h3>
+          <p class="sub">₹ million · Calculations sheet, SUMIFS · 2024–2026 are partial periods</p>
+          <svg class="chart" id="c-year" viewBox="0 0 640 210" role="img" aria-label="Bars of yearly transaction value, flat at about 29 to 30 million from 2020 to 2023"></svg>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>What the dashboard shows</h3>
+        <dl class="figs">
+          <div class="fig"><dt>Payments' share of value</dt><dd>10%</dd><span class="src">The clearest cross-sell gap. Deposits, transfers and withdrawals sit near 30% each.</span></div>
+          <div class="fig"><dt>Branch totals range</dt><dd>₹2.2–2.6 M</dd><span class="src">No standout branch. Avg ticket varies under 10% across all 50.</span></div>
+          <div class="fig"><dt>Largest single account</dt><dd>&lt; 0.2%</dd><span class="src">₹0.20 M of value across 1,652 accounts: low concentration.</span></div>
+          <div class="fig"><dt>Undated transactions</dt><dd>1,000 (2%)</dd><span class="src">Flagged as a data-quality issue. They drop out of year-based views.</span></div>
+        </dl>
+      </div>
+    </div>
+
+    <ul class="built">
+      <li>Modelled 11 linked tables (transactions, accounts, customers, loans, branches, addresses and lookup tables) as the data layer.</li>
+      <li>Built 8 pivot tables and 22 charts covering branch performance, the monthly trend, type mix, top-10 branches and accounts, and ticket-size bands.</li>
+      <li>Wrote a calculation layer with COUNTIFS, SUMIFS and AVERAGEIFS behind an interactive type-and-year filter that recalculates the dashboard cards.</li>
+      <li>Wrote business insights and a chart-by-chart guide explaining what each view tells management.</li>
+    </ul>
+
+    <div class="dl">
+      <a class="btn" href="Banking_Analytics_Dashboard_Subhajeet_Dey.xlsx" download>Download workbook</a>
+      <div class="info"><span class="mono">Banking_Analytics_Dashboard_Subhajeet_Dey.xlsx</span> · 9.7 MB</div>
+      <div class="sheets" aria-label="Main sheets in this workbook"><span>dashboard 1</span><span>Dashboards</span><span>Calculations</span><span>pivot tables 1–6</span><span>transactions</span><span>loans</span><span>customers</span><span>+ 8 lookup tables</span></div>
+    </div>
+  </section>
+
+  <!-- Project: Hypothesis -->
+  <section class="sheet" id="hypothesis">
+    <div class="sheet-head">
+      <div class="eyebrow">Data Science · Group project (Group E)</div>
+      <h2>Is Delta's 83.46% on-time claim true?</h2>
+      <div class="meta"><span><b>Data</b> 1,443 Delta flights from a 10,000-flight 2024 US sample</span><span><b>Method</b> One-sample z-test of a proportion</span><span><b>My role</b> Probability &amp; distribution lead</span></div>
+    </div>
+    <p class="question">Delta publicly reports that 83.46% of its flights arrive within 15 minutes of schedule. Does an independent sample of its 2024 flights back that up?</p>
+
+    <div class="cols">
+      <div class="stack">
+        <div class="panel">
+          <h3>Arrival delay distribution</h3>
+          <p class="sub">Flights per 15-minute bin · 2_Distribution · skewness 4.63, excess kurtosis 33.4</p>
+          <div class="legend"><span><i style="background:var(--accent)"></i>On time (under 15 min late)</span><span><i style="background:var(--second)"></i>Late</span></div>
+          <svg class="chart" id="c-hist" viewBox="0 0 640 240" role="img" aria-label="Histogram of arrival delays, heavily right-skewed with most flights early or within 15 minutes"></svg>
+        </div>
+        <div class="panel">
+          <h3>On-time rate with 95% confidence intervals</h3>
+          <p class="sub">Dashed line: Delta's claimed 83.46% · 3_Estimation and 6_seasonal</p>
+          <svg class="chart" id="c-ci" viewBox="0 0 640 230" role="img" aria-label="Confidence intervals by season. Summer sits below the claim, fall above it, and the full year contains it"></svg>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Key figures</h3>
+        <dl class="figs">
+          <div class="fig"><dt>Observed on-time rate</dt><dd>82.54%</dd><span class="src">1_CLEAN_DESCRIPTIVES · 1,191 of 1,443</span></div>
+          <div class="fig"><dt>95% confidence interval</dt><dd>80.58–84.50%</dd><span class="src">3_Estimation · p̂ ± 1.96 · SE</span></div>
+          <div class="fig"><dt>z statistic</dt><dd>−0.94</dd><span class="src">4_HypothesisTest · SE built from p₀</span></div>
+          <div class="fig"><dt>p-value (two-tailed)</dt><dd>0.345</dd><span class="src">4_HypothesisTest · fail to reject H₀ at α = 0.05</span></div>
+          <div class="fig"><dt>P(X ≤ 1,191) if the claim is true</dt><dd>18.1%</dd><span class="src">2_Distribution · exact binomial, n = 1,443</span></div>
+          <div class="fig"><dt>Season vs on-time, χ²</dt><dd>26.62</dd><span class="src">6_seasonal · 3 df, independence rejected</span></div>
+        </dl>
+      </div>
+    </div>
+
+    <p class="verdict">The annual claim holds: 82.54% is well within normal sampling error of 83.46%. Performance is not even through the year, though. Summer runs significantly below the claim and fall significantly above it, and both results survive a Bonferroni correction.</p>
+
+    <ul class="built">
+      <li><b>My part:</b> showed that arrival delays are far from normal (median −8 min, mean +3.5 min, longest delay 522 min), so the analysis models the on-time count as binomial rather than using the minutes.</li>
+      <li>Checked the normal-approximation conditions (np = 1,204 and n(1−p) = 239). The exact binomial probability came within 1 percentage point of the approximation.</li>
+      <li>Showed where a normal model would mislead: it puts 9.3% of flights over an hour late, but the actual figure is 6.5%.</li>
+      <li>The team cross-checked every figure with a second method in the validation sheet, and all checks matched.</li>
+    </ul>
+    <p class="team">Team: <b>Subhajeet Dey</b> (probability &amp; distribution), Aditya Anand (cleaning &amp; descriptive statistics), Pendem Soumya Sainath (estimation), Injirapu Tarun (hypothesis testing &amp; synthesis).</p>
+
+    <div class="dl">
+      <a class="btn" href="Delta_OnTime_Hypothesis_Test_GroupE.xlsx" download>Download workbook</a>
+      <div class="info"><span class="mono">Delta_OnTime_Hypothesis_Test_GroupE.xlsx</span> · 1.6 MB</div>
+      <div class="sheets" aria-label="Sheets in this workbook"><span>0_Assumptions</span><span>1_CLEAN_DESCRIPTIVES</span><span>2_Distribution</span><span>3_Estimation</span><span>4_HypothesisTest</span><span>5_Validation</span><span>6_seasonal</span><span>+ raw data</span></div>
+    </div>
+  </section>
+
+  <!-- Project: SQL -->
+  <section class="sheet" id="sql">
+    <div class="sheet-head">
+      <div class="eyebrow">Management Information Systems · Database design</div>
+      <h2>Movie booking database in MySQL</h2>
+      <div class="meta"><span><b>Engine</b> MySQL 8 · MySQL Workbench</span><span><b>Schema</b> 5 related tables with primary and foreign keys</span><span><b>Scope</b> DDL, DML, filtering, aggregation, joins</span></div>
+    </div>
+    <p class="question">How do you store movies, theatres, shows, customers and bookings so that one query can tell you who watched what, where, and how much they paid?</p>
+
+    <div class="panel">
+      <h3>Entity relationship diagram</h3>
+      <p class="sub">Primary keys (PK) in green, foreign keys (FK) in amber. Customer reaches Movie only through Booking and ShowDetails.</p>
+      <div class="er-wrap">
+      <svg class="chart er" viewBox="0 0 640 330" role="img" aria-label="Entity relationship diagram: Movie and Theatre link to ShowDetails; ShowDetails and Customer link to Booking">
+        <path class="rel" d="M150 70 H230 V165 H245"/>
+        <path class="rel" d="M490 70 H410 V165 H395"/>
+        <path class="rel" d="M320 222 V258 H435"/>
+        <path class="rel" d="M150 268 H435"/>
+        <text class="f" x="190" y="62">MovieID</text>
+        <text class="f" x="405" y="62">TheatreID</text>
+        <text class="f" x="330" y="250">ShowID</text>
+        <text class="f" x="262" y="283">CustomerID</text>
+        <g><rect class="box" x="10" y="10" width="140" height="112" rx="6"/><rect class="hd" x="10.6" y="10.6" width="138.8" height="22" rx="5"/><text class="t" x="20" y="26">Movie</text>
+          <text class="f pk" x="20" y="50">PK MovieID</text><text class="f" x="20" y="66">MovieName</text><text class="f" x="20" y="82">Genre</text><text class="f" x="20" y="98">Language</text><text class="f" x="20" y="114">Duration</text></g>
+        <g><rect class="box" x="490" y="10" width="140" height="112" rx="6"/><rect class="hd" x="490.6" y="10.6" width="138.8" height="22" rx="5"/><text class="t" x="500" y="26">Theatre</text>
+          <text class="f pk" x="500" y="50">PK TheatreID</text><text class="f" x="500" y="66">TheatreName</text><text class="f" x="500" y="82">City</text><text class="f" x="500" y="98">ScreenNo</text><text class="f" x="500" y="114">Capacity</text></g>
+        <g><rect class="box" x="245" y="110" width="150" height="112" rx="6"/><rect class="hd" x="245.6" y="110.6" width="148.8" height="22" rx="5"/><text class="t" x="255" y="126">ShowDetails</text>
+          <text class="f pk" x="255" y="150">PK ShowID</text><text class="f fk" x="255" y="166">FK MovieID</text><text class="f fk" x="255" y="182">FK TheatreID</text><text class="f" x="255" y="198">ShowDate</text><text class="f" x="255" y="214">TicketPrice</text></g>
+        <g><rect class="box" x="10" y="212" width="140" height="112" rx="6"/><rect class="hd" x="10.6" y="212.6" width="138.8" height="22" rx="5"/><text class="t" x="20" y="228">Customer</text>
+          <text class="f pk" x="20" y="252">PK CustomerID</text><text class="f" x="20" y="268">CustomerName</text><text class="f" x="20" y="284">Phone</text><text class="f" x="20" y="300">Age</text><text class="f" x="20" y="316">Gender</text></g>
+        <g><rect class="box" x="435" y="200" width="195" height="124" rx="6"/><rect class="hd" x="435.6" y="200.6" width="193.8" height="22" rx="5"/><text class="t" x="445" y="216">Booking</text>
+          <text class="f pk" x="445" y="240">PK BookingID</text><text class="f fk" x="445" y="256">FK CustomerID</text><text class="f fk" x="445" y="272">FK ShowID</text><text class="f" x="445" y="288">SeatsBooked</text><text class="f" x="445" y="304">TotalAmount</text><text class="f" x="445" y="320">BookingStatus (ALTER TABLE)</text></g>
+      </svg>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div class="panel">
+        <h3>Four-table join: every booking, end to end</h3>
+        <p class="sub">Booking → Customer, ShowDetails → Movie, Theatre</p>
+        <div class="code-wrap"><pre class="code"><span class="k">SELECT</span> c.CustomerName, m.MovieName, t.TheatreName, t.City,
+       s.ShowDate, s.TicketPrice, b.SeatsBooked, b.TotalAmount
+<span class="k">FROM</span> Booking b
+<span class="k">JOIN</span> Customer c    <span class="k">ON</span> b.CustomerID = c.CustomerID
+<span class="k">JOIN</span> ShowDetails s <span class="k">ON</span> b.ShowID = s.ShowID
+<span class="k">JOIN</span> Movie m       <span class="k">ON</span> s.MovieID = m.MovieID
+<span class="k">JOIN</span> Theatre t     <span class="k">ON</span> s.TheatreID = t.TheatreID;</pre></div>
+        <div class="tbl-wrap">
+          <table class="result">
+            <thead><tr><th>Customer</th><th>Movie</th><th>Theatre</th><th>City</th><th>Show date</th><th>Price</th><th>Seats</th><th>Total</th></tr></thead>
+            <tbody>
+              <tr><td>Rahul</td><td>Avengers</td><td>PVR Hyderabad</td><td>Hyderabad</td><td>2026-08-10</td><td class="n">350.00</td><td class="n">2</td><td class="n">700.00</td></tr>
+              <tr><td>Priya</td><td>RRR</td><td>INOX Pune</td><td>Pune</td><td>2026-08-10</td><td class="n">300.00</td><td class="n">3</td><td class="n">900.00</td></tr>
+              <tr><td>Amit</td><td>Inception</td><td>Cinepolis Bangalore</td><td>Bangalore</td><td>2026-08-11</td><td class="n">400.00</td><td class="n">1</td><td class="n">400.00</td></tr>
+              <tr><td>Sneha</td><td>Kalki 2898 AD</td><td>AMB Hyderabad</td><td>Hyderabad</td><td>2026-08-11</td><td class="n">450.00</td><td class="n">2</td><td class="n">900.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Business questions answered</h3>
+        <dl class="figs">
+          <div class="fig"><dt>Average ticket price</dt><dd>₹350.00</dd><span class="src">ROUND(AVG(TicketPrice), 2)</span></div>
+          <div class="fig"><dt>Ticket price range</dt><dd>₹250–450</dd><span class="src">MAX / MIN on ShowDetails</span></div>
+          <div class="fig"><dt>Revenue and seats per show</dt><dd>GROUP BY</dd><span class="src">SUM(TotalAmount), SUM(SeatsBooked) by ShowID</span></div>
+          <div class="fig"><dt>Theatres in chosen cities</dt><dd>IN</dd><span class="src">WHERE City IN ('Hyderabad', 'Pune')</span></div>
+          <div class="fig"><dt>Genres on offer</dt><dd>DISTINCT</dd><span class="src">SELECT DISTINCT Genre FROM Movie</span></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="skills" aria-label="SQL covered"><span>CREATE TABLE</span><span>PRIMARY / FOREIGN KEY</span><span>INSERT</span><span>ALTER TABLE</span><span>UPDATE</span><span>DELETE</span><span>WHERE · IN</span><span>DISTINCT</span><span>ORDER BY</span><span>COUNT · SUM · AVG · MAX · MIN</span><span>GROUP BY</span><span>Multi-table JOIN</span></div>
+
+    <div class="dl">
+      <div class="info">Full SQL script and project report available on request.</div>
+    </div>
+  </section>
+
+  <footer>Sources: BSE India price data (DCM Ltd., BSE Sensex); Kaggle "Flight Data 2024" sample; course-provided banking dataset. Analysis is done in Excel with live formulas; the database runs in MySQL.</footer>
+</div>
+
+<script>
+const PRICE = [["2021-01-01",100.0,100.0],["2021-01-08",96.2,101.9],["2021-01-15",95.5,102.4],["2021-01-22",93.1,102.1],["2021-02-01",96.9,101.5],["2021-02-08",95.0,107.3],["2021-02-15",108.3,109.0],["2021-02-22",92.2,103.9],["2021-03-01",92.9,104.1],["2021-03-08",92.9,105.4],["2021-03-16",91.9,105.2],["2021-03-23",84.7,104.6],["2021-03-31",84.6,103.4],["2021-04-08",91.0,103.9],["2021-04-16",87.5,102.0],["2021-04-26",84.9,101.1],["2021-05-03",87.9,101.8],["2021-05-10",91.9,103.4],["2021-05-18",100.0,104.9],["2021-05-25",102.9,105.8],["2021-06-01",119.6,108.5],["2021-06-08",141.2,109.2],["2021-06-15",143.8,110.2],["2021-06-22",137.8,109.9],["2021-06-29",143.0,109.8],["2021-07-06",135.7,110.4],["2021-07-13",144.7,110.2],["2021-07-20",138.6,109.0],["2021-07-28",173.5,109.6],["2021-08-04",201.9,113.6],["2021-08-11",188.9,113.9],["2021-08-18",172.1,116.2],["2021-08-26",170.4,116.9],["2021-09-02",164.6,120.9],["2021-09-09",165.3,121.8],["2021-09-17",161.7,123.3],["2021-09-24",173.3,125.4],["2021-10-01",189.8,122.8],["2021-10-08",186.5,125.5],["2021-10-18",184.9,129.0],["2021-10-25",223.1,127.4],["2021-11-01",258.4,125.6],["2021-11-09",319.6,126.2],["2021-11-16",357.5,126.0],["2021-11-24",366.2,121.9],["2021-12-01",377.5,120.5],["2021-12-08",445.4,122.5],["2021-12-15",469.3,120.7],["2021-12-22",454.1,118.9],["2021-12-29",469.2,120.8],["2022-01-05",462.4,125.8],["2022-01-12",466.2,127.7],["2022-01-19",434.1,125.5],["2022-01-27",422.7,119.7],["2022-02-03",432.4,122.8],["2022-02-10",434.1,123.1],["2022-02-17",364.5,120.9],["2022-02-24",317.3,113.9],["2022-03-04",334.1,113.5],["2022-03-11",347.7,116.0],["2022-03-21",284.9,119.7],["2022-03-28",298.6,120.3],["2022-04-04",331.0,126.6],["2022-04-11",310.6,123.2],["2022-04-20",340.7,119.2],["2022-04-27",331.2,118.7],["2022-05-05",335.4,116.4],["2022-05-12",248.9,110.6],["2022-05-19",260.8,110.3],["2022-05-26",248.7,113.3],["2022-06-02",255.5,116.6],["2022-06-09",257.5,115.6],["2022-06-16",233.4,107.6],["2022-06-23",233.1,109.2],["2022-06-30",232.1,110.8],["2022-07-07",228.6,113.2],["2022-07-14",214.9,111.6],["2022-07-21",184.2,116.3],["2022-07-28",161.2,118.8],["2022-08-04",169.2,121.8],["2022-08-12",160.1,124.2],["2022-08-22",232.4,122.8],["2022-08-29",238.6,121.1],["2022-09-06",238.6,123.7],["2022-09-13",297.1,126.5],["2022-09-20",291.2,124.8],["2022-09-27",252.3,119.3],["2022-10-04",254.9,121.3],["2022-10-12",285.6,120.4],["2022-10-19",267.1,123.5],["2022-10-27",274.2,124.8],["2022-11-03",272.6,127.1],["2022-11-11",266.9,129.1],["2022-11-18",268.6,128.8],["2022-11-25",256.7,130.1],["2022-12-02",325.8,131.3],["2022-12-09",321.5,129.9],["2022-12-16",310.7,128.1],["2022-12-23",267.2,125.0],["2022-12-30",280.9,127.1],["2023-01-06",280.8,125.1],["2023-01-13",283.7,125.9],["2023-01-20",274.7,126.6],["2023-01-30",272.6,124.3],["2023-02-06",274.2,126.4],["2023-02-13",264.1,126.2],["2023-02-20",268.3,126.8],["2023-02-27",266.0,123.9],["2023-03-06",251.4,125.8],["2023-03-14",246.1,121.0],["2023-03-21",256.5,121.3],["2023-03-28",251.1,120.4],["2023-04-06",252.8,125.0],["2023-04-17",247.7,125.2],["2023-04-24",223.9,125.5],["2023-05-02",223.8,128.2],["2023-05-09",222.2,129.0],["2023-05-16",227.1,129.4],["2023-05-23",237.6,129.5],["2023-05-30",236.7,131.5],["2023-06-06",253.6,131.2],["2023-06-13",252.0,131.9],["2023-06-20",251.6,132.3],["2023-06-27",242.4,132.5],["2023-07-05",236.2,136.7],["2023-07-12",233.5,136.6],["2023-07-19",237.8,140.2],["2023-07-26",285.2,139.4],["2023-08-02",275.7,137.4],["2023-08-09",277.3,137.9],["2023-08-17",253.3,136.1],["2023-08-24",256.7,136.3],["2023-08-31",268.5,135.4],["2023-09-07",263.7,138.4],["2023-09-14",257.9,141.0],["2023-09-22",256.5,137.9],["2023-09-29",336.4,137.5],["2023-10-09",276.3,136.9],["2023-10-16",277.1,138.2],["2023-10-23",258.0,134.9],["2023-10-31",267.4,133.4],["2023-11-07",260.7,135.7],["2023-11-13",252.0,135.6],["2023-11-21",251.6,137.7],["2023-11-29",259.8,139.8],["2023-12-06",275.7,145.5],["2023-12-13",274.1,145.4],["2023-12-20",276.0,147.3],["2023-12-28",270.8,151.3],["2024-01-04",268.7,150.1],["2024-01-11",309.3,149.8],["2024-01-18",293.5,148.7],["2024-01-25",295.1,147.7],["2024-02-02",306.3,150.6],["2024-02-09",305.3,149.6],["2024-02-16",289.8,151.3],["2024-02-23",301.0,152.8],["2024-03-01",287.8,154.1],["2024-03-07",289.4,154.8],["2024-03-15",250.6,151.8],["2024-03-22",257.4,152.1],["2024-04-02",269.9,154.4],["2024-04-09",274.1,156.0],["2024-04-18",267.1,151.4],["2024-04-25",275.8,155.3],["2024-05-03",266.2,154.3],["2024-05-10",256.7,151.8],["2024-05-17",256.7,154.4],["2024-05-24",255.8,157.5],["2024-05-31",255.6,154.5],["2024-06-07",258.3,160.2],["2024-06-14",266.7,160.8],["2024-06-24",265.9,161.6],["2024-07-01",269.7,166.0],["2024-07-08",317.5,167.0],["2024-07-15",325.8,168.5],["2024-07-23",340.0,168.0],["2024-07-30",372.5,170.2],["2024-08-06",361.7,164.2],["2024-08-13",360.8,164.9],["2024-08-21",350.3,169.0],["2024-08-28",357.0,170.9],["2024-09-04",349.2,172.0],["2024-09-11",334.5,170.3],["2024-09-18",320.5,173.3],["2024-09-25",318.0,177.9],["2024-10-03",315.4,172.3],["2024-10-10",322.4,170.5],["2024-10-17",325.8,169.2],["2024-10-24",300.8,167.3],["2024-10-31",309.4,165.8],["2024-11-07",333.1,166.2],["2024-11-14",314.6,162.1],["2024-11-25",318.2,167.4],["2024-12-02",325.5,167.6],["2024-12-09",322.8,170.3],["2024-12-16",435.3,170.8],["2024-12-23",368.2,164.1],["2024-12-31",364.6,163.2],["2025-01-07",375.6,163.4],["2025-01-14",354.4,159.8],["2025-01-21",365.0,158.4],["2025-01-28",326.2,158.6],["2025-02-03",344.7,161.2],["2025-02-10",348.4,161.5],["2025-02-17",351.0,158.8],["2025-02-24",350.6,155.5],["2025-03-04",345.2,152.5],["2025-03-11",336.9,154.8],["2025-03-19",344.9,157.6],["2025-03-26",345.1,161.5],["2025-04-03",355.6,159.4],["2025-04-11",339.7,157.0],["2025-04-22",369.0,166.3],["2025-04-29",358.4,167.7],["2025-05-07",347.3,168.7],["2025-05-14",363.4,169.9],["2025-05-21",390.1,170.5],["2025-05-28",361.9,169.9],["2025-06-04",357.9,169.2],["2025-06-11",369.8,172.4],["2025-06-18",352.0,170.1],["2025-06-25",361.4,172.9],["2025-07-02",364.3,174.2],["2025-07-09",366.4,174.5],["2025-07-16",395.3,172.6],["2025-07-23",391.2,172.8],["2025-07-30",365.5,170.2],["2025-08-06",348.5,168.3],["2025-08-13",346.8,168.3],["2025-08-21",346.6,171.3],["2025-08-29",347.8,166.7],["2025-09-05",345.1,168.6],["2025-09-12",343.3,171.1],["2025-09-19",345.1,172.6],["2025-09-26",340.0,168.0],["2025-10-06",337.5,170.9],["2025-10-13",343.1,172.0],["2025-10-20",329.3,176.2],["2025-10-28",328.5,176.8],["2025-11-04",320.2,174.3],["2025-11-12",312.0,176.5],["2025-11-19",325.4,178.0],["2025-11-26",327.5,178.8],["2025-12-03",329.1,177.8],["2025-12-10",320.6,176.3],["2025-12-17",323.4,176.6],["2025-12-24",317.9,178.4],["2025-12-31",322.8,178.0]];
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, parent, text){
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text != null) e.textContent = text;
+  if (parent) parent.appendChild(e);
+  return e;
+}
+const css = v => `var(--${v})`;
+
+/* 1. Indexed price lines */
+(function(){
+  const svg = document.getElementById("c-price");
+  const L=44,R=628,T=10,B=222;
+  const t0 = Date.parse("2021-01-01"), t1 = Date.parse("2025-12-31");
+  const x = d => L + (Date.parse(d)-t0)/(t1-t0)*(R-L);
+  const y = v => B - v/500*(B-T);
+  for (let v=0; v<=500; v+=100){
+    el("line",{x1:L,x2:R,y1:y(v),y2:y(v),class:"gl"},svg);
+    el("text",{x:L-8,y:y(v)+4,"text-anchor":"end"},svg,v);
+  }
+  for (let yr=2021; yr<=2025; yr++){
+    el("text",{x:x(yr+"-07-01"),y:B+18,"text-anchor":"middle"},svg,yr);
+  }
+  const path = i => PRICE.map((p,k)=>(k?"L":"M")+x(p[0]).toFixed(1)+","+y(p[i]).toFixed(1)).join("");
+  el("path",{d:path(2),fill:"none",stroke:css("second"),"stroke-width":2},svg);
+  el("path",{d:path(1),fill:"none",stroke:css("accent"),"stroke-width":2},svg);
+  const last = PRICE[PRICE.length-1];
+  el("circle",{cx:x(last[0]),cy:y(last[1]),r:3.5,fill:css("accent")},svg);
+  el("circle",{cx:x(last[0]),cy:y(last[2]),r:3.5,fill:css("second")},svg);
+  el("text",{x:x(last[0])-6,y:y(last[1])-8,"text-anchor":"end",style:"fill:var(--ink)"},svg,last[1].toFixed(0));
+  el("text",{x:x(last[0])-6,y:y(last[2])-8,"text-anchor":"end",style:"fill:var(--ink)"},svg,last[2].toFixed(0));
+})();
+
+/* 2. Actual vs CAPM grouped bars */
+(function(){
+  const svg = document.getElementById("c-capm");
+  const data = [[2021,164.5,17.5],[2022,-25.7,6.1],[2023,7.3,15.1],[2024,40.2,8.3],[2025,-4.5,8.7]];
+  const L=44,R=628,T=12,B=218, lo=-40, hi=180;
+  const y = v => T + (hi-v)/(hi-lo)*(B-T);
+  for (let v=-40; v<=180; v+=40){
+    el("line",{x1:L,x2:R,y1:y(v),y2:y(v),class:v===0?"zero":"gl"},svg);
+    el("text",{x:L-8,y:y(v)+4,"text-anchor":"end"},svg,v+"%");
+  }
+  const slot=(R-L)/data.length, bw=Math.min(34,slot*0.3);
+  data.forEach((d,i)=>{
+    const cx = L + slot*i + slot/2;
+    [[d[1],css(d[1]<0?"neg":"accent"),-bw-2],[d[2],css("muted"),2]].forEach(([v,c,off])=>{
+      const y0=y(0), y1=y(v);
+      el("rect",{x:cx+off,y:Math.min(y0,y1),width:bw,height:Math.max(1,Math.abs(y1-y0)),fill:c,rx:2},svg);
+    });
+    el("text",{x:cx-bw/2-2,y:d[1]>=0?y(d[1])-5:y(d[1])+13,"text-anchor":"middle",style:"fill:var(--ink)"},svg,d[1].toFixed(1));
+    el("text",{x:cx,y:B+18,"text-anchor":"middle"},svg,d[0]);
+  });
+})();
+
+/* 3. Value by type (horizontal) */
+(function(){
+  const svg = document.getElementById("c-type");
+  const data = [["Deposit",37.98,30.3],["Transfer",37.53,30.0],["Withdrawal",37.15,29.7],["Payment",12.53,10.0]];
+  const L=92,R=560,T=8, rowH=44, max=40;
+  const x = v => L + v/max*(R-L);
+  for (let v=0; v<=40; v+=10){
+    el("line",{x1:x(v),x2:x(v),y1:T,y2:T+rowH*data.length,class:"gl"},svg);
+    el("text",{x:x(v),y:T+rowH*data.length+16,"text-anchor":"middle"},svg,"₹"+v+"M");
+  }
+  data.forEach((d,i)=>{
+    const yy = T + i*rowH + 8;
+    el("text",{x:L-10,y:yy+17,"text-anchor":"end",style:"fill:var(--ink)"},svg,d[0]);
+    el("rect",{x:L,y:yy,width:x(d[1])-L,height:26,rx:3,fill:css(i===3?"second":"accent")},svg);
+    el("text",{x:x(d[1])+8,y:yy+17,style:"fill:var(--ink)"},svg,d[1].toFixed(1)+" · "+d[2].toFixed(1)+"%");
+  });
+})();
+
+/* 4. Value by year */
+(function(){
+  const svg = document.getElementById("c-year");
+  const data = [[2020,30.27],[2021,30.05],[2022,30.04],[2023,29.47],[2024,3.49],[2025,0.81],[2026,1.07]];
+  const L=44,R=628,T=12,B=180, max=35;
+  const y = v => B - v/max*(B-T);
+  for (let v=0; v<=30; v+=10){
+    el("line",{x1:L,x2:R,y1:y(v),y2:y(v),class:"gl"},svg);
+    el("text",{x:L-8,y:y(v)+4,"text-anchor":"end"},svg,v);
+  }
+  const slot=(R-L)/data.length, bw=slot*0.56;
+  data.forEach((d,i)=>{
+    const cx=L+slot*i+slot/2, partial=d[0]>=2024;
+    el("rect",{x:cx-bw/2,y:y(d[1]),width:bw,height:Math.max(1,B-y(d[1])),rx:2,fill:css(partial?"muted":"accent"),"fill-opacity":partial?0.45:1},svg);
+    el("text",{x:cx,y:y(d[1])-5,"text-anchor":"middle",style:"fill:var(--ink)"},svg,d[1].toFixed(1));
+    el("text",{x:cx,y:B+18,"text-anchor":"middle"},svg,d[0]);
+  });
+})();
+
+/* 5. Delay histogram */
+(function(){
+  const svg = document.getElementById("c-hist");
+  const bins = [["−75",1],["−60",3],["−45",44],["−30",315],["−15",584],["0",244],["15",84],["30",40],["45",33],[">60",95]];
+  const L=44,R=628,T=12,B=196, max=600;
+  const y = v => B - v/max*(B-T);
+  for (let v=0; v<=600; v+=150){
+    el("line",{x1:L,x2:R,y1:y(v),y2:y(v),class:"gl"},svg);
+    el("text",{x:L-8,y:y(v)+4,"text-anchor":"end"},svg,v);
+  }
+  const slot=(R-L)/bins.length, bw=slot-4;
+  bins.forEach((b,i)=>{
+    const x0=L+slot*i+2, late=i>=6;
+    el("rect",{x:x0,y:y(b[1]),width:bw,height:Math.max(1,B-y(b[1])),rx:2,fill:css(late?"second":"accent")},svg);
+    el("text",{x:x0+bw/2,y:y(b[1])-5,"text-anchor":"middle",style:"fill:var(--ink)"},svg,b[1]);
+    el("text",{x:i===9?x0+bw/2:x0,y:B+16,"text-anchor":"middle"},svg,b[0]);
+  });
+  el("text",{x:(L+R)/2,y:B+34,"text-anchor":"middle"},svg,"arrival delay, minutes (bin start)");
+})();
+
+/* 6. CI dot plot */
+(function(){
+  const svg = document.getElementById("c-ci");
+  const rows = [["Full year",82.54,80.58,84.50],["Winter",84.20,80.36,88.03],["Spring",79.89,75.71,84.07],["Summer",75.91,71.47,80.35],["Fall",89.61,86.56,92.66]];
+  const L=92,R=620,T=26,rowH=36, lo=70, hi=95, claim=83.46;
+  const x = v => L + (v-lo)/(hi-lo)*(R-L);
+  const H = T + rowH*rows.length;
+  for (let v=70; v<=95; v+=5){
+    el("line",{x1:x(v),x2:x(v),y1:T,y2:H,class:"gl"},svg);
+    el("text",{x:x(v),y:H+16,"text-anchor":"middle"},svg,v+"%");
+  }
+  el("line",{x1:x(claim),x2:x(claim),y1:T-4,y2:H,stroke:css("ink"),"stroke-width":1.25,"stroke-dasharray":"4 3"},svg);
+  rows.forEach((r,i)=>{
+    const yy=T+i*rowH+rowH/2, off = r[3]<claim || r[2]>claim;
+    const c = css(off?"second":"accent");
+    el("text",{x:L-10,y:yy+4,"text-anchor":"end",style:"fill:var(--ink)"},svg,r[0]);
+    el("line",{x1:x(r[2]),x2:x(r[3]),y1:yy,y2:yy,stroke:c,"stroke-width":3,"stroke-linecap":"round"},svg);
+    el("circle",{cx:x(r[1]),cy:yy,r:5.5,fill:css("surface"),stroke:c,"stroke-width":2.5},svg);
+    el("text",{x:x(r[3])+8,y:yy+4,style:"fill:var(--ink)"},svg,r[1].toFixed(1)+"%");
+  });
+  el("text",{x:x(claim)+6,y:14,"text-anchor":"start",style:"fill:var(--ink)"},svg,"claim 83.46%");
+})();
+
+/* Tabs follow scroll */
+(function(){
+  const links=[...document.querySelectorAll(".tabs a")];
+  const set = id => links.forEach(a=>a.classList.toggle("on",a.dataset.tab===id));
+  set("capm");
+  if (!("IntersectionObserver" in window)) return;
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting) set(e.target.id)})},{rootMargin:"-45% 0px -50% 0px"});
+  document.querySelectorAll(".sheet").forEach(s=>io.observe(s));
+})();
+
+/* Copy email */
+document.getElementById("copy-email").addEventListener("click", e=>{
+  const b=e.currentTarget, t=document.getElementById("email").textContent;
+  const done = ok => { b.textContent = ok ? "Copied" : "Select and copy"; setTimeout(()=>b.textContent="Copy email",1800); };
+  try{
+    navigator.clipboard.writeText(t).then(()=>done(true), ()=>{selectEmail();done(false)});
+  }catch(_){selectEmail();done(false)}
+});
+function selectEmail(){const r=document.createRange();r.selectNodeContents(document.getElementById("email"));const s=getSelection();s.removeAllRanges();s.addRange(r);}
+
+</script>
+
+</body>
+</html>
